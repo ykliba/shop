@@ -18,8 +18,8 @@ $dbh = new PDO($dsn, $user, $password);
 $dbh -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $sql = 'SELECT code,name FROM mst_staff WHERE 1';
-$stmt = $dbh -> prepare($sql);
-$stmt -> execute();
+$stmt = $dbh->prepare($sql);
+$stmt->execute();
 
 $dbh = null;
 
@@ -33,7 +33,7 @@ while(true)
   {
     break;
   }
-  print '<inpyt type="radio" name="staffcode" value="'.$rec['code'].'">';
+  print '<input type="radio" name="staffcode" value="'.$rec['code'].'">';
   print $rec['name'];
   print '<br />';
 }
