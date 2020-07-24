@@ -6,7 +6,7 @@
 </head> 
 <body>
 
-  商品追加<br />
+商品追加<br />
 <br />
 <form method="post" action="pro_add_check.php">
 商品名を入力してください。 <br />
