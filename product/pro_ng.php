@@ -6,6 +6,6 @@
 </head> 
 <body>
 
-スタッフが選択されていません。 <br />
-<a href="staff_list.php">戻る</a>
+商品が選択されていません。 <br />
+<a href="pro_list.php">戻る</a>
 </body> 

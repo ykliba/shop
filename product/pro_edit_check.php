@@ -8,10 +8,13 @@
 
 <?php
 
+$pro_code = $_POST['code'];
 $pro_name = $_POST['name'];
 $pro_price = $_POST['price'];
+$pro_gazou_name_old = $_POST['gazou_name_old'];
 $pro_gazou = $_FILES['gazou'];
 
+$pro_code = htmlspecialchars($pro_name,ENT_QUOTES,'UTF-8');
 $pro_name = htmlspecialchars($pro_name,ENT_QUOTES,'UTF-8');
 $pro_price = htmlspecialchars($pro_price,ENT_QUOTES,'UTF-8');
 
@@ -59,10 +62,12 @@ if($pro_name == '' || preg_match('/^[0-9]+$/',$pro_price) == 0 || $pro_gazou['si
 }
 else
 {
-  print '上記の商品を追加します。 <br />';
-  print '<form method="post" action="pro_add_done.php">';
+  print '上記のように変更します。 <br />';
+  print '<form method="post" action="pro_edit_done.php">';
+  print '<input type="hidden" name="code" value="'.$pro_code.'">';
   print '<input type="hidden" name="name" value="'.$pro_name.'">';
   print '<input type="hidden" name="price" value="'.$pro_price.'">';
+  print '<input type="hidden" name="gazou_name_old" value="'.$pro_gazou_name_old.'">';
   print '<input type="hidden" name="price" value="'.$pro_gazou['name'].'">';
   print '<br />';
   print '<input type="button" onclick="history.back()" value="戻る">';
