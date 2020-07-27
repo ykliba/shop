@@ -32,7 +32,7 @@ $dbh = null;
 
 if($pro_gazou_name=='')
 {
-  $disp_gazou = '';
+  $disp_gazou='';
 }
 else
 {

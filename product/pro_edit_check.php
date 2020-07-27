@@ -40,9 +40,9 @@ else
   print '円<br />';
 }
 
-if($pro_gazou['size']>0)
+if($pro_gazou['size'] > 0)
 {
-  if($pro_gazou['size']>1000000)
+  if($pro_gazou['size'] > 1000000)
   {
     print '画像が大きすぎます。';
   }
@@ -68,7 +68,7 @@ else
   print '<input type="hidden" name="name" value="'.$pro_name.'">';
   print '<input type="hidden" name="price" value="'.$pro_price.'">';
   print '<input type="hidden" name="gazou_name_old" value="'.$pro_gazou_name_old.'">';
-  print '<input type="hidden" name="price" value="'.$pro_gazou['name'].'">';
+  print '<input type="hidden" name="gazou_name" value="'.$pro_gazou['name'].'">';
   print '<br />';
   print '<input type="button" onclick="history.back()" value="戻る">';
   print '<input type ="submit" value="OK">';
