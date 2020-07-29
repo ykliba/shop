@@ -58,10 +58,13 @@ while(true)
   print '<br />';
 }
 
+print '<br />';
+print '<a href="shop_cartlook.php">カートを見る</a><br />';
+
 }
 catch (Exception $e)
 {
-  print 'ただいま障害により大変ご迷惑をお掛けしております。';
+ print 'ただいま障害により大変ご迷惑をお掛けしております。';
   exit();
 }
 
