@@ -1,3 +1,7 @@
+<?php
+ session_start();
+ session_regenerate_id(true);
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -8,7 +12,10 @@
 
 <?php
 
-require_once('../common/common.php');
+try
+{
+
+  require_once('../common/common.php');
 
 $post=sanitize($_POST);
 
@@ -26,6 +33,13 @@ print '商品は以下の住所に発送させて頂きます。<br />';
 print $postal1.'-'.$postal2.'<br />';
 print $address.'<br />';
 print $tel.'<br />';
+
+}
+catch(Exception $e)
+{
+  print 'ただいま障害により大変ご迷惑をお掛けしております。';
+  exit();
+}
 
 ?>
 
