@@ -34,6 +34,12 @@ print $postal1.'-'.$postal2.'<br />';
 print $address.'<br />';
 print $tel.'<br />';
 
+$honbun='';
+$honbun.=$onamae."様\n\nこのたびはご注文ありがとうございました。\n";
+$honbun.="\n";
+$honnbun.="ご注文商品\n";
+$honbun.="---------------\n";
+
 }
 catch(Exception $e)
 {
