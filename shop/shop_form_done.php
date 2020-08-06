@@ -71,6 +71,10 @@ for($i=0; $i<$max; $i++)
   $honbun.=$shokei."円\n";
 }
 
+$sql='LOCK TABLES dat_sales WRITE,dat_sales_product WRITE';
+$stmt=$dbh->prepare($sql);
+$stmt->execute();
+
 $sql='INSERT INTO dat_sales(code_member,name,email,postal1,postal2,address,tel)VALUES(?,?,?,?,?,?,?)';
 $stmt=$dbh->prepare($sql);
 $data=array();
@@ -100,6 +104,10 @@ for($i=0; $i<$max; $i++)
   $data[]=$kazu[$i];
   $stmt->execute($data);
 }
+
+$sql='UNLOCK TABLES';
+$stmt=$dbh->prepare($sql);
+$stmt->execute();
 
 $dbh=null;
 
@@ -134,6 +142,14 @@ mb_language('Japanese');
 mb_internal_encoding('UTF-8');
 mb_send_mail('mediaboxing2@gmail.com',$title,$honbun,$header);
 
+session_start();
+$_SESSION=array();
+if(isset($_COOKIE[session_name()])==true)
+{
+  setcookie(session_name(),'',time()-42000,'/');
+}
+session_destroy();
+
 }
 catch(Exception $e)
 {
@@ -142,5 +158,8 @@ catch(Exception $e)
 }
 
 ?>
+
+<br />
+<a href="shop_list.php">商品画面へ</a>
 
 </body>
