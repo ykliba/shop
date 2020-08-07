@@ -23,9 +23,20 @@ else
 </head> 
 <body>
 
-ショップ管理トップメニュー<br />
-<br />
-<a href="../staff/staff_list.php">スタッフ管理</a><br />
-<br />
-<a href="../product/pro_list.php">商品管理</a><br />
+<?php
+require_once('../common/common.php');
+?>
+ダウンロードしたい商品を選んでください。<br />
+
+<form method="post" action="order_download_done.php">
+  <?php pulldown_year();?>
+  年
+  <?php pulldown_month();?>
+  月
+  <?php pulldown_day();?>
+  日<br />
+  <br />
+  <input type="submit" value="ダウンロードへ">
+</form>
+
 </body>

@@ -15,7 +15,7 @@
 try
 {
 
-  require_once('../common/common.php');
+require_once('../common/common.php');
 
 $post=sanitize($_POST);
 
