@@ -6,10 +6,10 @@ try
 require_once('../common/common.php');
 
 $post=sanitize($_POST);
-$staff_code=$post['code'];
-$staff_pass=$post['pass'];
+$member_email=$post['email'];
+$member_pass=$post['pass'];
 
-$staff_pass=md5($staff_pass);
+$member_pass=md5($member_pass);
 
 $dsn='mysql:dbname=shop;host=localhost;charset=utf8';
 $user='root';
@@ -17,10 +17,10 @@ $password='root';
 $dbh=new PDO($dsn,$user,$password);
 $dbh->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
 
-$sql='SELECT name FROM mst_staff WHERE code=? AND password=?';
+$sql='SELECT code,name FROM dat_member WHERE email=? AND password=?';
 $stmt=$dbh->prepare($sql);
-$data[]=$staff_code;
-$data[]=$staff_pass;
+$data[]=$member_email;
+$data[]=$member_pass;
 $stmt->execute($data);
 
 $dbh=null;
@@ -29,16 +29,16 @@ $rec=$stmt->fetch(PDO::FETCH_ASSOC);
 
 if($rec==false)
 {
-  print 'スタッフコードかパスワードが間違っています。<br />';
-  print '<a href="staff_login.html">戻る</a>';
+  print 'メールアドレスかパスワードが間違っています。<br />';
+  print '<a href="member_login.html">戻る</a>';
 }
 else
 {
   session_start();
-  $_SESSION['login']=1;
-  $_SESSION['staff_code']=$staff_code;
-  $_SESSION['staff_name']=$rec['name'];
-  header('Location:staff_top.php');
+  $_SESSION['member_login']=1;
+  $_SESSION['member_code']=$rec_code;
+  $_SESSION['member_name']=$rec['name'];
+  header('Location:shop_list.php');
   exit();
 }
 
