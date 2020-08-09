@@ -81,7 +81,7 @@ $sql='LOCK TABLES dat_sales WRITE,dat_sales_product WRITE,dat_member WRITE';
 $stmt=$dbh->prepare($sql);
 $stmt->execute();
 
-$lastmembercode=$_SESSION['member_code'];
+$lastmembercode=$_SESSION[''];
 
 $sql='INSERT INTO dat_sales(code_member,name,email,postal1,postal2,address,tel)VALUES(?,?,?,?,?,?,?)';
 $stmt=$dbh->prepare($sql);
